@@ -1,0 +1,41 @@
+body {
+    background-color: #f0f0f0;
+    width: 600px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+h2 {
+    font-size: 1.5em;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+.highlight {
+    background-color: yellow;
+    color: red;
+}
+
+.student {
+    border: 5px;
+    border-style: solid;
+    padding: 20px;
+    border-color: blue;
+    width: 40%;
+}
+
+span {
+    color: orange;
+    font-weight: bold;
+}
+
+ul {list-style-type: circle;}
