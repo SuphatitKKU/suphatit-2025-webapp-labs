@@ -38,4 +38,10 @@ span {
     font-weight: bold;
 }
 
-ul {list-style-type: circle;}
+ol{
+    list-style-type: upper-roman;
+}
+
+ul {
+    list-style-type: circle;
+}
