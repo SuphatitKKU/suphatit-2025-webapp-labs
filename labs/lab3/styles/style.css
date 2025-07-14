@@ -39,7 +39,7 @@ span {
 }
 
 ol{
-    list-style-type: upper-roman;
+    list-style-type: lower-roman;
 }
 
 ul {
