@@ -87,8 +87,7 @@ h3 {
 .block-item:hover,
 .inline-item:hover,
 .inline-block-item:hover {
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
+    background-color: #333;
 }
 
 nav {
@@ -179,8 +178,7 @@ nav a:hover {
 }
 
 .flex-item:hover {
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
+    background-color: #333;
 }
 
 @media (max-width: 600px) {
