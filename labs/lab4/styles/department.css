@@ -1,0 +1,563 @@
+/* =========================================
+DEPARTMENT WEBSITE - SIMPLIFIED VERSION
+Complete only the 4 TODO sections below
+========================================= */
+
+/* Universal reset and foundation */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* ============================================
+⭐ TODO SECTION 1: RESPONSIVE IMAGES (3 points)
+PROBLEM ANALYSIS:
+Faculty photos are currently breaking out of their containers on different screen sizes.
+When an image is larger than its container, it creates horizontal scrolling issues.
+Additionally, faculty photos need to fit properly within their circular containers
+without distortion, regardless of the original image dimensions or aspect ratio.
+TASK:
+Create CSS rules that ensure all images behave responsively and faculty photos
+display correctly within their circular frames.
+============================================ */
+
+/* TODO: Create a universal rule for all img elements
+Consider: What happens when an image is wider than its container?
+Consider: How can you maintain proportional scaling?
+Consider: What display type works best for images in layouts? */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* TODO: Handle faculty photo fitting within circular containers
+Consider: How do you control how an image fills its container?
+Consider: What happens when image aspect ratio doesn't match container? */
+.faculty-photo img {
+    object-fit: cover;
+}
+
+/* Container for consistent width */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* University color scheme - PROVIDED */
+:root {
+    --primary-blue: #1e40af;
+    --secondary-blue: #3b82f6;
+    --accent-gold: #f59e0b;
+    --text-light: #6b7280;
+    --background-light: #f8fafc;
+}
+
+/* Header base styling - PROVIDED */
+.site-header {
+    background: var(--primary-blue);
+    color: white;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+⭐ TODO SECTION 2: HEADER FLEXBOX (4 points)
+PROBLEM ANALYSIS:
+The header currently has the logo and navigation stacked vertically, but the design
+requires them to be on opposite sides of the header. The navigation links are also
+displaying as a vertical list instead of a horizontal menu.
+The layout should show:
+- Logo and department name on the left
+- Navigation menu on the right
+- Items vertically centered within the header
+- Navigation links arranged horizontally with spacing
+TASK:
+Implement flexbox layouts to achieve the desired header arrangement and
+navigation menu presentation.
+============================================ */
+
+/* TODO: Layout the header content container
+Consider: How do you place items at opposite ends of a container?
+Consider: How do you vertically align items of different heights?
+Consider: What constraints are needed for maximum width and centering? */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.department-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-placeholder {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--primary-blue);
+    flex-shrink: 0;
+}
+
+.department-logo h1 {
+    font-size: 1.5rem;
+    color: white;
+}
+
+/* TODO: Style the navigation menu layout
+Consider: How do you arrange list items horizontally instead of vertically?
+Consider: What list styling is typically removed for navigation menus?
+Consider: How do you create consistent spacing between navigation items? */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+.nav-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Hero section - PROVIDED */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    padding: 4rem 1rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    max-width: 600px;
+}
+
+.cta-button {
+    display: inline-block;
+    background: var(--accent-gold);
+    color: var(--primary-blue);
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+
+/* Faculty section base styling - PROVIDED */
+.faculty-section {
+    padding: 4rem 0;
+    background: white;
+}
+
+.faculty-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: var(--primary-blue);
+}
+
+/* ============================================
+⭐ TODO SECTION 3: FACULTY FLEXBOX (4 points)
+PROBLEM ANALYSIS:
+The faculty cards are currently stacking vertically, but the design requires them
+to display side by side on desktop screens. Each card's internal content (photo,
+name, title) also needs proper alignment and spacing. The circular photo containers
+need their images centered properly.
+Expected behavior:
+- Faculty cards should display in a row on desktop
+- Cards should be equal width and flexible
+- Card content should be vertically arranged and centered
+- Faculty photos should be centered within their circular containers
+- Layout should adapt when space is limited
+TASK:
+Create flexbox layouts for the faculty grid, individual cards, and photo containers.
+============================================ */
+
+/* TODO: Create the faculty grid layout
+Consider: How do you arrange items horizontally with equal spacing?
+Consider: What happens when there isn't enough space for all items in one row?
+Consider: How do you center a group of items within their container? */
+
+
+.faculty-grid {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+/* TODO: Style individual faculty cards
+Consider: How do you arrange content vertically within a card?
+Consider: How do you center-align content horizontally within a card?
+Consider: How do you make cards flexible yet maintain size constraints?
+Consider: What flex property makes items grow equally to fill available space? */
+
+.faculty-card {
+    background: var(--background-light);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    width: 400px;
+    transition: transform 0.3s ease;
+}
+
+/* TODO: Center images within the circular photo containers
+Consider: How do you center content both horizontally and vertically?
+Consider: What layout method allows precise centering in both dimensions? */
+.faculty-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background: var(--background-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Additional faculty photo image styling for circular images */
+.faculty-photo img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.faculty-info {
+    text-align: center;
+}
+
+.faculty-info h3 {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.faculty-title {
+    color: var(--secondary-blue);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.faculty-expertise {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* =========================================
+PROGRAMS SECTION - PROVIDED
+========================================= */
+.programs-section {
+    padding: 4rem 0;
+    background: var(--background-light);
+}
+
+.programs-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: var(--primary-blue);
+}
+
+/* FLEXBOX: Programs grid layout */
+.programs-grid {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.program-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    min-width: 300px;
+    transition: transform 0.3s ease;
+}
+
+
+.program-card h3 {
+    color: var(--primary-blue);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.program-duration {
+    color: var(--accent-gold);
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.program-card p {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.program-highlights {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.program-highlights li {
+    padding: 0.25rem 0;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.program-highlights li::before {
+    content: "✓ ";
+    color: var(--secondary-blue);
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+/* =========================================
+CONTACT SECTION - PROVIDED
+========================================= */
+.contact-section {
+    padding: 4rem 0;
+    background: white;
+}
+
+.contact-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: var(--primary-blue);
+}
+
+/* FLEXBOX: Contact content layout */
+.contact-content {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    flex: 1;
+    min-width: 250px;
+    background: var(--background-light);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+
+.contact-item h3 {
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.contact-item p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* =========================================
+FOOTER - PROVIDED
+========================================= */
+.site-footer {
+    background: var(--primary-blue);
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.site-footer p {
+    opacity: 0.9;
+}
+
+/* ============================================
+⭐ TODO SECTION 4: MOBILE RESPONSIVE (2 points)
+PROBLEM ANALYSIS:
+The current layout works well on desktop screens, but creates usability issues
+on mobile devices. The horizontal layouts become cramped, text becomes too small,
+and navigation becomes difficult to use with fingers.
+On mobile devices, users expect:
+- Larger touch targets for navigation
+- Content stacked vertically for easy scrolling
+- Full-width utilization for better readability
+- Hidden/collapsible navigation to save space
+The mobile breakpoint should activate when the screen width becomes too narrow
+to comfortably display the desktop layout (typically around tablet size).
+TASK:
+Create responsive rules that optimize the layout for mobile devices.
+============================================ */
+
+/* Tablet and small desktop (768px and up) - PROVIDED */
+@media (min-width: 768px) {
+    .hero-content h2 {
+        font-size: 3rem;
+    }
+    /* Ensure faculty and programs stay flexible */
+    .faculty-grid {
+        justify-content: space-around;
+    }
+    .programs-grid {
+        justify-content: space-between;
+    }
+}
+
+/* TODO: Implement mobile-optimized layout */
+@media (max-width: 767px) {
+    /* TODO: Make the hamburger menu visible
+    Consider: What display value shows a hidden element? */
+    .nav-toggle {
+        display: block;
+    }
+
+    /* TODO: Allow header content to wrap and position dropdown navigation
+    Consider: How do you allow flex items to wrap to a new line?
+    Consider: What positioning is needed for absolute-positioned children? */
+    .header-content {
+        flex-wrap: wrap;
+        position: relative;
+    }
+
+    .main-nav {
+        width: 100%;
+        order: 3;
+    }
+
+    /* FLEXBOX: Mobile navigation menu - PROVIDED */
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--primary-blue);
+        flex-direction: column;
+        padding: 1rem 0;
+        border-radius: 0 0 8px 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin: 0;
+    }
+
+    .nav-menu li:last-child a {
+        border-bottom: none;
+    }
+
+    /* Hero adjustments for mobile - PROVIDED */
+    .hero-section {
+        padding: 3rem 1rem;
+        min-height: 40vh;
+    }
+
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    /* TODO: Optimize faculty layout for mobile screens
+    Consider: How should cards be arranged when horizontal space is limited?
+    Consider: How do you center items that are stacked vertically? */
+    .faculty-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* TODO: Make faculty cards mobile-friendly
+    Consider: What width works best for mobile content?
+    Consider: How do you ensure cards don't become too narrow or too wide? */
+    .faculty-card {
+        width: 100%;
+    }
+
+    /* Program cards mobile layout - PROVIDED */
+    .programs-grid {
+        flex-direction: column;
+    }
+
+    .program-card {
+        min-width: 100%;
+    }
+
+    /* Contact section mobile layout - PROVIDED */
+    .contact-content {
+        flex-direction: column;
+    }
+
+    .contact-item {
+        min-width: 100%;
+    }
+}

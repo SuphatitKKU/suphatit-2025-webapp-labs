@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- ⭐ TODO: Add viewport meta tag for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Engineering Department - Khon Kaen University</title>
+    <link rel="stylesheet" href="styles/department.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <div class="department-logo">
+                <div class="logo-placeholder">KKU</div>
+                <h1>Computer Engineering</h1>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#faculty">Faculty</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="nav-toggle">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h2>Leading Innovation in Computer Engineering</h2>
+            <p>Empowering the next generation of engineers through cutting-edge education and research in computer science, software development, and emerging technologies.</p>
+            <a href="#programs" class="cta-button">Explore Programs</a>
+        </div>
+    </section>
+
+    <section id="faculty" class="faculty-section">
+        <div class="container">
+            <h2>Our Faculty</h2>
+            <div class="faculty-grid">
+                <div class="faculty-card">
+                    <div class="faculty-photo">
+                        <!-- ⭐ TODO: Add responsive image with proper alt text -->
+                        <img src="images/somchai.png" alt="Dr. Somchai Jaidee - Department Head">
+                    </div>
+                    <div class="faculty-info">
+                        <h3>Dr. Somchai Jaidee</h3>
+                        <p class="faculty-title">Department Head</p>
+                        <p class="faculty-expertise">Artificial Intelligence, Machine Learning</p>
+                    </div>
+                </div>
+                <div class="faculty-card">
+                    <div class="faculty-photo">
+                        <!-- ⭐ TODO: Add responsive image with proper alt text -->
+                        <img src="images/siriporn.png" alt="Dr. Siriporn Thanakit - Associate Professor">
+                    </div>
+                    <div class="faculty-info">
+                        <h3>Dr. Siriporn Thanakit</h3>
+                        <p class="faculty-title">Associate Professor</p>
+                        <p class="faculty-expertise">Software Engineering, Web Technologies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs" class="programs-section">
+        <div class="container">
+            <h2>Academic Programs</h2>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <h3>Bachelor of Engineering</h3>
+                    <p class="program-duration">4 Years</p>
+                    <p>Comprehensive undergraduate program covering hardware design, software development, and system integration with hands-on laboratory experience and industry partnerships.</p>
+                    <ul class="program-highlights">
+                        <li>Core computer engineering fundamentals</li>
+                        <li>Industry internship program</li>
+                        <li>Senior capstone project</li>
+                    </ul>
+                </div>
+                <div class="program-card">
+                    <h3>Master of Engineering</h3>
+                    <p class="program-duration">2 Years</p>
+                    <p>Advanced graduate program with specializations in AI, cybersecurity, or software engineering, combining rigorous coursework with cutting-edge research opportunities.</p>
+                    <ul class="program-highlights">
+                        <li>Specialized track selection</li>
+                        <li>Research thesis requirement</li>
+                        <li>Industry collaboration projects</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Contact Information</h2>
+            <div class="contact-content">
+                <div class="contact-item">
+                    <h3>Department Office</h3>
+                    <p>Computer Engineering Department<br>
+                    Faculty of Engineering<br>
+                    Khon Kaen University</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Get in Touch</h3>
+                    <p><strong>Phone:</strong> +66 43 202 555<br>
+                    <strong>Email:</strong> info@cpe.kku.ac.th</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Computer Engineering Department, Khon Kaen University. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const navToggle = document.querySelector(".nav-toggle");
+            const navMenu = document.querySelector(".nav-menu");
+
+            navToggle.addEventListener("click", function () {
+                navMenu.classList.toggle("active");
+            });
+
+            // Close menu when clicking on links
+            const navLinks = document.querySelectorAll(".nav-menu a");
+            navLinks.forEach((link) => {
+                link.addEventListener("click", function () {
+                    navMenu.classList.remove("active");
+                });
+            });
+        });
+    </script>
+</body>
+</html>
