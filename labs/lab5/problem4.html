@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cylinder Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      h1 {
+        color: #333;
+      }
+      .highlight {
+        color: #007bff;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🔢 Cylinder Volume Calculator</h1>
+
+    <script>
+      // TODO 1: Implement isValidNumber function
+      // This arrow function should check if a value is a valid number
+      // Parameters: value - the value to check
+      // Return: true if the value is a number, not NaN, and finite; false otherwise
+      // Hint: Use typeof, isNaN(), and isFinite() functions
+      let isValidNumber = (value) => {
+        return typeof value === 'number' && !isNaN(value) && isFinite(value);
+      };
+
+      // TODO 2: Implement getDimension function
+      // This function should prompt user for input and validate it
+      // Parameters: dimensionName - string describing what dimension to get (e.g., "radius", "height")
+      // Return: a valid positive number
+      // Requirements:
+      // - Use prompt() to get user input
+      // - Convert string to number using parseFloat()
+      // - Validate that the number is valid and positive
+      // - Keep asking until valid input is provided
+      // - Show alert with error message for invalid input
+      function getDimension(dimensionName) {
+        let value;
+        do {
+          let input = prompt(`Enter the ${dimensionName} of the cylinder:`);
+          value = parseFloat(input);
+          if (!isValidNumber(value) || value <= 0) {
+            alert(`Invalid input! Please enter a valid positive number.`);
+          }
+        } while (!isValidNumber(value) || value <= 0);
+        return value;
+      }
+
+      // TODO 3: Implement Cylinder constructor function
+      // This constructor function should:
+      // - Get radius using getDimension("radius")
+      // - Get height using getDimension("height")  
+      // - Create a volume method (arrow function) that calculates cylinder volume
+      // - Volume formula: π × radius² × height (use Math.PI)
+      function Cylinder() {
+        // Get radius dimension
+        this.radius = getDimension("radius");
+        
+        // Get height dimension
+        this.height = getDimension("height");
+        
+        // Create volume calculation method (arrow function)
+        this.volume = () => {
+          return Math.PI * this.radius * this.radius * this.height;
+        };
+      }
+
+      // TODO 4: Implement displayResult function
+      // This function expression should display the calculation result
+      // Parameters: cylinder - a Cylinder object
+      // Requirements:
+      // - Calculate volume by calling cylinder.volume()
+      // - Validate that the volume is a valid number
+      // - Use document.write() to display result in the specified format
+      // - Format volume to 4 decimal places using toFixed(4)
+      // - Use the provided HTML structure with highlight class
+      const displayResult = function (cylinder) {
+        let volume = cylinder.volume();
+        if (isValidNumber(volume)) {
+          document.write(`<p>Cylinder Volume for radius <span class="highlight">${cylinder.radius}</span> and height <span class="highlight">${cylinder.height}</span> is <span class="highlight">${volume.toFixed(4)}</span> cubic units</p>`);
+        }
+      };
+
+      // Main execution - DO NOT MODIFY
+      // Create cylinder instance and display result
+      const cylinder = new Cylinder();
+      displayResult(cylinder);
+    </script>
+  </body>
+</html>
