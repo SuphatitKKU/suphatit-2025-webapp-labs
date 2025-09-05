@@ -30,12 +30,10 @@
         let position = secondsElapsed * 100;
         
         if (position >= 1000) {
-          position = 1000;
-          catEl.style.left = position + "px";
-          cat.src = "img/cat-walk.png";
+          cancelIdleCallback(walkTheCat);
+          cat.src = "img/cat-stop.png";
         } else {
           catEl.style.left = position + "px";
-
           requestAnimationFrame(walkTheCat);
         }
       };
