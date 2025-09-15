@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fetch GitHub</title>
+  <style>
+    body {
+      text-align: center;
+      margin-top: 50px;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 a {
+      text-decoration: underline;
+      color: blue;
+      font-weight: bold;
+    }
+
+    img {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      border: 5px solid blue;
+      margin-top: 20px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div id="content"></div>
+
+  <script>
+    const username = "SuphatitKKU";
+    const apiUrl = `https://api.github.com/users/${username}`;
+
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        const content = document.getElementById('content');
+
+        // สร้าง <h1> พร้อมลิงก์ไปยัง GitHub
+        const nameLink = document.createElement('a');
+        nameLink.href = data.html_url;
+        nameLink.textContent = data.name || data.login;
+        nameLink.target = "_blank";
+
+        const heading = document.createElement('h1');
+        heading.appendChild(nameLink);
+
+        // สร้างรูปโปรไฟล์
+        const avatar = document.createElement('img');
+        avatar.src = data.avatar_url;
+        avatar.alt = "GitHub Avatar";
+
+        content.appendChild(heading);
+        content.appendChild(avatar);
+      })
+      .catch(error => console.error('Error fetching GitHub data:', error));
+  </script>
+</body>
+</html>
