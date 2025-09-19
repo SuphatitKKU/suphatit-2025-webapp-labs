@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Parse Students File</title>
+</head>
+<body>
+  <h2>Reading Students Information</h2>
+  <div id="output"></div>
+
+  <script>
+    fetch("students.json")
+      .then(response => response.json())
+      .then(data => {
+        let students = data.wclass;
+        let output = "<ol>";
+
+        students.forEach(item => {
+          let student = item.student;
+          let id = student["@attributes"].id;
+          let name = student.name;
+          let skill = student.skill;
+
+          output += `<li>${id} <b>${name}</b> has skills <i>${skill}</i></li>`;
+        });
+
+        output += "</ol>";
+        document.getElementById("output").innerHTML = output;
+      })
+      .catch(error => console.error("Error loading JSON:", error));
+  </script>
+</body>
+</html>
