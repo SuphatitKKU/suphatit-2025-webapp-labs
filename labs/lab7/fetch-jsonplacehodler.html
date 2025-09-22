@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Adding a new post</title>
+</head>
+<body>
+  <h1>Adding a new post</h1>
+  <div id="result"></div>
+
+  <script>
+    const newPost = {
+      userId: 11,
+      title: "Volleyball game this evening!",
+      body: "The game is between Thailand and Vietnam."
+    };
+
+    fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      },
+      body: JSON.stringify(newPost)
+    })
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById("result").innerHTML = `
+        <pre>${JSON.stringify(data)}</pre>
+        <p>The new post has title as <b>${data.title}</b> and body as <b>${data.body}</b>.</p>
+      `;
+    })
+    .catch(error => {
+      document.getElementById("result").textContent = "Error: " + error;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Parse Places</title>
+  <style>
+    .name {
+      color: blue;
+      font-weight: bold;
+    }
+    .location {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div id="output"></div>
+
+  <script>
+    fetch("places.json")
+      .then(response => response.json())
+      .then(data => {
+        let results = data.results;
+        let outputDiv = document.getElementById("output");
+
+        results.forEach((place, index) => {
+          let name = place.name;
+          let lat = place.geometry.location.lat;
+          let lng = place.geometry.location.lng;
+
+          let container = document.createElement("p");
+          container.innerHTML = 
+            (index + 1) + ". " +
+            "<span class='name'>name = " + name + "</span><br>" +
+            "<span class='location'>location = " + lat + " " + lng + "</span>";
+
+          outputDiv.appendChild(container);
+        });
+      })
+      .catch(error => console.error("Error loading JSON:", error));
+  </script>
+</body>
+</html>
