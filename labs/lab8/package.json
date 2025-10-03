@@ -1,17 +1,19 @@
 {
   "name": "calculator-app",
   "version": "1.0.0",
-  "description": "Simple calculator program",
+  "description": "Simple calculator program and IP API server",
   "main": "calculator.js",
   "scripts": {
     "calculator": "node calculator.js",
     "calc": "node calculator.js",
-    "weather": "node weather.js"
+    "weather": "node weather.js",
+    "start": "node ip-api.js"
   },
   "license": "MIT",
-  "keywords": ["calculator", "math"],
+  "keywords": ["calculator", "math", "ip-api", "express", "axios"],
   "author": "Suphatit Srichat",
   "dependencies": {
-    "axios": "^1.12.2"
+    "axios": "^1.12.2",
+    "express": "^4.19.2"
   }
 }
