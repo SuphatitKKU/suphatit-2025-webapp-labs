@@ -1,0 +1,18 @@
+.App {
+  text-align: center;
+}
+
+h1 {
+  background-color: black;
+  color: white;
+  padding: 10px;
+}
+
+
+a {
+  display: block;
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
