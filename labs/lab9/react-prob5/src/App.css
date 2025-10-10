@@ -1,0 +1,36 @@
+.App {
+  text-align: center;
+}
+
+h1 {
+  padding: 10px;
+}
+
+ol {
+  list-style-type: decimal;
+  padding-left: 60px;
+}
+
+li {
+  margin: 15px 0;
+  display: list-item;
+}
+
+li > img {
+  margin-right: 10px;
+  vertical-align: bottom;
+}
+
+a {
+  display: inline;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: underline;
+  vertical-align: bottom;
+}
+
+span {
+  font-size: 20px;
+  font-weight: normal;
+  color: black;
+}
